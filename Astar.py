@@ -1,20 +1,14 @@
 import math
 class State:
     
-    
-    # Initializing the Eight Puzzle by the given size, fringe and explored list
-    # fringe = List of expanded states
-    # explored = List of visited states
+ 
    
     
     def __init__(self,value,level,fval):
         self.value = value
         self.level = level
         self.fval = fval
-        
-   
-    # The function generates the children of the parent by moving the zero(0) elememnt in the feasible postion
-    # There are 4 possible moves : left,up,right,down
+       
    
     def generate_children(self):
 
@@ -106,14 +100,6 @@ class Eight_Puzzle:
     
     
     
-    ##############################################
-    # It calculates the sum of hueristic value 
-    # f(x) = g(x) + h(x)
-    # g(x) = level order
-    # h(x) = manhattan distance or misplaced tiles
-    ##############################################
-    
-    
     def f_misplace_tiles(self,initial_state,goal_state):
         g_x = initial_state.level
         h_x = self.h_misplaced_tiles(initial_state.value,goal_state)
@@ -124,13 +110,6 @@ class Eight_Puzzle:
         return f_x
     
     
-    
-    ########################################################################################
-    # This function takes the Initial and Goal state from the user. 
-    # Further it calls the other function to expand the children of parent to reach the goal
-    # It also removes the current state node and adds to explored state
-    # Finally it checks if the goal state is reached or not
-    ########################################################################################
     def stage_process(self):
             counter = 0 
             print("\nInitial State \nEnter values comma separated 3 in each row(e.g: 1,2,3): ")
