@@ -1,3 +1,17 @@
+sudo su
+sudo apt-get update
+grep -e 'vmx' /proc/cpuinfo (to check virtualization support)
+Cat /proc/cpuinfo
+sudo apt-get install qemu-kvm libvirt-bin bridge-utils virt-manager
+sudo adduser jash
+Sudo adduser jash libvirtd
+sudo virt-manager
+
+
+
+
+
+
 egrep -c '(vmx|svm)' /proc/cpuinfo
 
 sudo kvm-ok
