@@ -28,7 +28,24 @@ void BFS (int i){
     }
     
 }
-
+void bfsr(){
+    
+    if(q1.empty()){
+        return;
+    }
+    int i=q1.front();
+    q1.pop();
+    cout<<i<<" ";
+    
+    for(auto it :v[i]){
+        if(visited[it]==0){
+            q1.push(it);
+            visited[it]=1;
+        }
+    }
+    bfsr();
+    
+}
 void DFS(int i){
     if(visited[i]==1){
         return;
@@ -57,6 +74,17 @@ int main()
     v[4].push_back(1);
 
     BFS(3);
+    for(int i=1;i<7;i++){
+        
+        if(visited[i]==0){
+            
+            visited[i]=1;
+            q1.push(i);
+            bfsr();
+            
+        }
+        
+    }
 
     cout<<"\n\n";
 
