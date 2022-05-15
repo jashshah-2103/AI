@@ -95,4 +95,77 @@ int main()
 
     DFS(2);
 }
+********************************************************************************
+#include <bits/stdc++.h>
+using namespace std;
 
+int const N=10;
+int visited[10];
+vector<int>v[N];
+queue<int> q;
+void bfsrec(){
+    
+    if(q.empty()){
+        return;
+    }
+    int i=q.front();
+    cout<<i<<" ";
+    q.pop();
+    
+    for(auto it:v[i]){
+        if(visited[it]!=1){
+            q.push(it);
+            visited[it]=1;
+        }
+    }
+    bfsrec();
+}
+
+void dfs(int i){
+    if(visited[i]==1){
+        return;
+    }
+    cout<<i<<" ";
+    visited[i]=1;
+    for(auto it:v[i]){
+        dfs(it);
+    }
+}
+
+int main(){
+    cout<<"\nEnter number of nodes:- ";
+    int nodes,edges;
+    cin>>nodes;
+    cout<<"\nEnter number of edges:- ";
+    cin>>edges;
+    for(int i=0;i<edges;i++){
+               int s;
+               int e;
+               cout<<"Enter for "<<i+1<<"th "<<"edge: \n";
+               cout<<"Enter start node:- ";
+               cin>>s;
+               cout<<"\n";
+               cout<<"Enter end node:- ";
+               cin>>e;
+               cout<<"\n";
+               v[s].push_back(e);
+               v[e].push_back(s);
+               
+               
+           }
+    cout<<"BFS:- ";
+    for(int i=1;i<nodes+1;i++){
+        if(visited[i]!=1){
+            visited[i]=1;
+            q.push(i);
+            bfsrec();
+        }
+    }
+    cout<<"\n\n";
+
+   cout<<"DFS:- ";
+    for(int i=0;i<N;i++)
+         visited[i] = 0;
+
+    dfs(2);
+}
